@@ -12,19 +12,6 @@ const Item = styled.div`
 
 class ToDoItem extends Component {
   
-  constructor(props){
-    super(props)
-    console.log('Hello from constructor')
-  }
-
-  componentDidMount = () => {
-    console.log('component mounted')
-  } 
-
-  componentWillUnmount = () => {
-    console.log(`todo ${this.props.text} unmounted...`)
-  }
-
   static defaultProps = {
     done: false
   }
@@ -34,8 +21,31 @@ class ToDoItem extends Component {
   }
     
   toggleDone = () => {
-    this.setState({ done: !this.state.done })
-  }
+    //this.setState({ done: !this.state.done })
+    fetch(
+      `http://127.0.0.1:5000/todo/${this.props.id}`,
+      { 
+        mode: "cors",
+        method: "PUT",
+        headers: {
+          "Accept":"application/json",
+            "Content-Type": "application/json",
+            "x-access-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJjNDliOTgxZS0zYzU4LTQyY2MtOTRhMC0yMTFjYzM0NTk0NWEiLCJleHAiOjE1ODYxNzI1Njd9.VHsj2jUUBH25HPrynAi1tGWG-Vuze_avf38VNsKdONE"
+        },
+        body:{}
+      }
+    ) 
+  .then (response => {
+    if(response.ok){
+      this.setState({done: !this.state.done})
+    }
+  })
+  .catch(error => console.log('Authorization failed : ' + error.message));
+  
+    }
+  
+
+
 
   render() {
     const { text } = this.props

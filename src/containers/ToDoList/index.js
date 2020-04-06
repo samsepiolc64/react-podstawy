@@ -28,25 +28,23 @@ class ToDoList extends Component {
         fetch(
             'http://127.0.0.1:5000/todo/2',
             { 
-                mode: "cors",
+            mode: "cors",
             method: "GET",
-              headers : {
+              headers: {
                 "Accept":"application/json",
                   "Content-Type": "application/json",
-                  "Origin":"http://127.0.0.1:5000/todo/2",
-                  "x-access-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiIxY2Y0YzZjNi1kZjgwLTQ5MDItOTdmOS1kMjY5NTg1ZDNkYzYiLCJleHAiOjE1ODYwMjYzMDh9.0sebnwcMf5hVi9gqKg__PnLTqsvmTSI9nB4xElVM3ZU"
+                  "x-access-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiJjNDliOTgxZS0zYzU4LTQyY2MtOTRhMC0yMTFjYzM0NTk0NWEiLCJleHAiOjE1ODYxNzI1Njd9.VHsj2jUUBH25HPrynAi1tGWG-Vuze_avf38VNsKdONE"
               }
             }
           ) 
         .then(response => response.json())
-        .then(json => console.log(json))
+        .then(json => this.setState({tasks: [json]}))
         .catch(error => console.log('Authorization failed : ' + error.message));
     }
 
     static defaultProps = {
         tasks: [
-            {text: "kupic chreba"},
-            {done: true, text: "wywalic smieci"}  
+
         ],
         title: "Moja ToDo lista"
     }
@@ -78,7 +76,7 @@ class ToDoList extends Component {
         <Container>
             <DestroyButton onClick={this.removeAll}>Remove all</DestroyButton>
             <Header>{title}</Header>
-            {tasks.map(task => <ToDoItem text={task.text} done={task.done} key={task.id} />)}
+            {tasks.map(task => <ToDoItem text={task.text} done={task.complete} id={task.id} key={task.id} />)}  
             <NewTodoForm 
             onSubmit={this.addToDo}
             onChange={this.updateDraft}
