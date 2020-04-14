@@ -27,9 +27,11 @@ const DestroyButton = styled.button`
 class ToDoList extends Component {
     componentDidMount = async () => {
         const tasks = await toDoItemApi.getAll()
-        this.setState({tasks})
+        const propId = _.prop('id');
+        const sort = _.sortWith([_.ascend(propId)]);
+        this.setState({tasks: sort( tasks)})
        }
-
+ 
     static defaultProps = {
         tasks: [],
         title: "Moja ToDo lista"

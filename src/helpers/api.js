@@ -1,7 +1,7 @@
 var myHeaders = {
     "Accept":"application/json",
     "Content-Type": "application/json",
-    "x-access-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiIxMDQxOTA1ZC0yMTY4LTQ0MTQtYTNiNy1hMDI5NjI3ZDU2OWEiLCJleHAiOjE1ODY2OTEzNDB9.Cs6RZqs5PiF8FGAT7YAMie2H7C3itM1oWeeF_MTDz-Y"
+    "x-access-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiI2YWQ5NTdjMy1hODI4LTQ4YzctYmMwMC1hMmI1MTI0ZjBjZjUiLCJleHAiOjE1ODY4NzgwNTd9.BIoJTcMjFnA-RHpa5NK1tlDLpMqnNfRSRjIHIdKLzpM"
 }
 
 export const get = url =>
