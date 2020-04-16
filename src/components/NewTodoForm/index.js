@@ -33,11 +33,11 @@ const Container = styled.div`
     padding: 5px;
 `
 
-const NewTodoForm = ({onChange, draft, onSubmit}) => (
+const NewTodoForm = ({ onChange, draft, onSubmit }) => (
     <Container>
-      <TextInput type="text" onChange={onChange} value={draft} />
-      <Button onClick={onSubmit}>+</Button>
+        <TextInput type="text" onChange={onChange} value={draft} />
+        <Button onClick={onSubmit}>+</Button>
     </Container>
-  )
+)
 
-  export default NewTodoForm
+export default NewTodoForm
